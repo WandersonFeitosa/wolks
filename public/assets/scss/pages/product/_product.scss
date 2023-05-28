@@ -1,0 +1,74 @@
+.buy {
+    padding-top: rem(155);
+    display: flex;
+    justify-content: space-between;
+
+    &__image {
+        width: 60%;
+        margin-top: rem(100);
+
+        img {
+            width: 100%;
+        }
+    }
+
+    &__info {
+        width: 30%;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+       
+
+        &>*:not(:last-child) {
+            margin-bottom: rem(30);
+        }
+
+        &__title {
+            font-size: rem(30);
+            font-weight: 700;
+        }
+
+        &__stock {
+            font-size: rem(20);
+            font-weight: 400;
+        }
+
+        &__year {
+            font-size: rem(20);
+            font-weight: 400;
+        }
+
+        &__details {
+            font-size: rem(20);
+            font-weight: 400;
+        }
+
+        &__price {
+            font-size: rem(30);
+            font-weight: 700;
+        }
+
+        &__button {
+            width: 100%;
+
+            button {
+                width: 100%;
+                height: rem(50);
+                background-color: rgb(0, 30, 80);
+                color: var(--white);
+                border: none;
+                border-radius: rem(5);
+                font-size: rem(20);
+                font-weight: 700;
+                cursor: pointer;
+                transition: all .3s ease-in-out;
+
+                &:hover {
+                    background-color: #000;
+                }
+            }
+        }
+    }
+
+}
