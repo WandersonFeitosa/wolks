@@ -16,6 +16,14 @@
     justify-content: center;
     align-items: center;
 
+    &__error {
+        color: red;
+        font-size: rem(15);
+        margin-bottom: rem(25);
+        text-align: center;
+        display: none;
+    }
+
     &__form {
         background: rgb(0, 67, 122);
         box-shadow: 0px 15px 24px rgba(0, 0, 0, 0.09);
@@ -50,6 +58,8 @@
                 color: var(--white);
             }
         }
+
+
 
         button {
             color: var(--white);

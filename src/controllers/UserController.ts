@@ -34,19 +34,19 @@ export class UserController {
   }
 
   async logUser(req: Request, res: Response) {
-    const { username, password } = req.body;
+    const { email, password } = req.body;
 
     //Busca o usuário no banco de dados
-    const user = await UserWolks.findOne({ username: username });
+    const user = await UserWolks.findOne({ email: email });
     if (!user) {
-      return res.status(400).json({ error: "User not found" });
+      return res.status(400).json({ error: "Usuário ou senha incorreto" });
     }
 
     //Verifica se a senha está correta
     if (user?.password) {
       const passwordMatch = await bcrypt.compare(password, user?.password);
       if (!passwordMatch) {
-        return res.status(400).json({ error: "Senha Incorreta" });
+        return res.status(400).json({ error: "Usuário ou senha incorreto" });
       }
     }
 
@@ -56,6 +56,14 @@ export class UserController {
       expiresIn: "1d",
     });
 
-    return res.status(200).json({ message: "Usuário logado", token });
+    const { name, username, _id } = user;
+
+    return res
+      .status(200)
+      .json({
+        message: "Usuário logado",
+        token,
+        user: { name, username, _id },
+      });
   }
 }

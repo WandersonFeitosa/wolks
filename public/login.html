@@ -21,9 +21,10 @@
     <section class="login-page">
         <div class="login-page__form">
             <h1 class="title-section">Fazer Login</h1>
-            <form>
-                <input type="text" placeholder="Nome de Usuário" name="username">
+            <form id="login-form">
+                <input type="email" placeholder="Email" name="email">
                 <input type="password" placeholder="Senha" name="password">
+                <div class="login-page__error"></div>
                 <button type="submit">Logar</button>
             </form>
 
