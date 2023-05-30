@@ -26,7 +26,7 @@ $("#login-form").submit(async (e) => {
     } else {
         localStorage.setItem("token", data.token);
         localStorage.setItem("user", JSON.stringify(data.user));
-        window.location.href = "./cadastro-veiculo.html";
+        window.location.href = "./register-car.html";
     }
 
 
