@@ -28,16 +28,17 @@
             </div>
             <div class="register-car-page__inputs">
                 <form action="">
-                    <input type="text" name="model" placeholder="Modelo">
-                    <input type="number" name="stock" placeholder="Quantidade em estoque">
-                    <input type="text" name="year" placeholder="Ano do carro">
-                    <input type="text" name="desc" placeholder="Um breve descrição">
-                    <input type="number" name="value" placeholder="Valor de carro">
+                    <input type="text" name="model" placeholder="Modelo" required>
+                    <input type="number" min="0" name="stock" placeholder="Quantidade em estoque" required>
+                    <input type="text" name="year" placeholder="Ano do carro" required>
+                    <input type="text" name="desc" placeholder="Um breve descrição" required>
+                    <input type="number" min="0" name="value" placeholder="Valor de carro em R$" required>
                     <div class="img-input">
                         <label for="image">Insira uma imagem do veículo</label>
-                        <input type="file" name="image">
+                        <input type="file" name="image" required>
                     </div>
                     <button type="submit">Cadastrar Veículo</button>
+                    <div class="register-car-page__return-msg"></div>
                 </form>
             </div>
 
