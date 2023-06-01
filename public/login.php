@@ -6,7 +6,7 @@
         <div class="login-page__form">
             <h1 class="title-section">Fazer Login</h1>
             <form id="login-form">
-                <input type="email" placeholder="Email" name="email">
+                <input type="email" placeholder="Nome de usuário" name="username">
                 <input type="password" placeholder="Senha" name="password">
                 <div class="login-page__error"></div>
                 <button type="submit">Logar</button>

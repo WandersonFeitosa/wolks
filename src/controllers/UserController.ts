@@ -5,39 +5,49 @@ import jwt from "jsonwebtoken";
 
 // Define o esquema para os usuários
 const userWolksSchema = new mongoose.Schema({
-  name: String,
   username: String,
+  email: String,
   password: String,
+  name: String,
 });
 
 export const UserWolks = mongoose.model("UserWolks", userWolksSchema);
 
 export class UserController {
   async createUser(req: Request, res: Response) {
-    const { name, username, password } = req.body;
+    const { name, username, email, password } = req.body;
 
-    //Busca o usuário no banco de dados
-    const checkUser = await UserWolks.findOne({ username: username });
-    if (checkUser) {
-      return res.status(400).json({ error: "username já utilizado" });
+    //Busca o username no banco de dados
+    const checkUsername = await UserWolks.findOne({ username: username });
+    if (checkUsername) {
+      return res.status(400).json({ error: "Nome de usuário já utilizado" });
+    }
+
+    //Busca o email no banco de dados
+    const checkEmail = await UserWolks.findOne({ email: email });
+    if (checkEmail) {
+      return res.status(400).json({ error: "Email já utilizado" });
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    const newUser = new UserWolks({ name, username, password: hashedPassword });
+    const newUser = new UserWolks({
+      name,
+      username,
+      email,
+      password: hashedPassword,
+    });
 
     await newUser.save();
 
-    return res
-      .status(201)
-      .json({ message: "Usuário criado com sucesso", newUser });
+    return res.status(201).json({ message: "Usuário criado com sucesso" });
   }
 
   async logUser(req: Request, res: Response) {
-    const { email, password } = req.body;
+    const { username, password } = req.body;
 
     //Busca o usuário no banco de dados
-    const user = await UserWolks.findOne({ email: email });
+    const user = await UserWolks.findOne({ username: username });
     if (!user) {
       return res.status(400).json({ error: "Usuário ou senha incorreto" });
     }
@@ -56,14 +66,16 @@ export class UserController {
       expiresIn: "1d",
     });
 
-    const { name, username, _id } = user;
+    const userData = {
+      name: user.name,
+      username: user.username,
+      email: user.email,
+    };
 
-    return res
-      .status(200)
-      .json({
-        message: "Usuário logado",
-        token,
-        user: { name, username, _id },
-      });
+    return res.status(200).json({
+      message: "Usuário logado",
+      token,
+      userData,
+    });
   }
 }
