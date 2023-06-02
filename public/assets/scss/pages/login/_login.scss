@@ -4,7 +4,6 @@
     filter: invert(1);
     top: rem(30);
     left: rem(30);
-
     width: 50px;
 }
 
@@ -16,35 +15,56 @@
     justify-content: center;
     align-items: center;
 
-    &__error {
-        color: red;
-        font-size: rem(15);
-        margin-bottom: rem(25);
-        text-align: center;
+    &__signup-form,
+    &__login-form {
+        display: flex;
+        gap: rem(40);
+        align-items: center;
+        padding: rem(40);
+
+    }
+
+    &__login-form {
+        border-right: 1px solid var(--white);
+    }
+
+    &__form-description {
+        max-width: rem(200);
+
+        p {
+            line-height: 140%;
+            font-weight: 200;
+        }
+    }
+
+    &__return-msg {
+        color: var(--red-500);
+        font-size: rem(14);
+        margin-top: rem(20);
         display: none;
     }
 
-    &__form {
+    &__form-wrapper {
         background: rgb(0, 67, 122);
         box-shadow: 0px 15px 24px rgba(0, 0, 0, 0.09);
         color: var(--white);
         max-width: max-content;
-        padding: rem(40);
         border-radius: 5px;
+        display: flex;
+        padding: rem(20) 0;
 
-        a {
-            color: var(--white);
+
+
+        h1 {
+            font-size: rem(30);
+            font-weight: 600;
+            margin-bottom: rem(20);
         }
 
         form {
             display: flex;
             flex-direction: column;
-            margin-bottom: rem(25);
-        }
 
-        .title-section {
-            font-size: rem(30);
-            text-align: center;
         }
 
         input {
@@ -53,13 +73,13 @@
             margin-bottom: rem(25);
             color: var(--white);
             padding: rem(10);
+            width: 100%;
 
             &::placeholder {
                 color: var(--white);
+                opacity: 0.6;
             }
         }
-
-
 
         button {
             color: var(--white);
@@ -73,6 +93,28 @@
             }
 
         }
+    }
+}
 
+@media(max-width:768px) {
+    .login-page {
+        height: unset;
+
+        &__form-wrapper {
+            flex-direction: column;
+            margin-top: rem(100);
+            gap: rem(20);
+            background: none;
+        }
+
+        &__signup-form,
+        &__login-form {
+            background: #00437a;
+            box-shadow: 0px 15px 24px rgba(0, 0, 0, .09);
+            flex-direction: column;
+            border: 0;
+            text-align: center;
+            gap: rem(20);
+        }
     }
 }

@@ -1,7 +1,7 @@
 $("#login-form").submit(async (e) => {
     e.preventDefault();
 
-    $(".login-page__error").css("display", "none");
+    $("#login-return").css("display", "none");
 
     const username = e.target.querySelector('input[name="username"]').value;
     const password = e.target.querySelector('input[name="password"]').value;
@@ -21,12 +21,12 @@ $("#login-form").submit(async (e) => {
 
     if (data.error) {
         console.log(data.error);
-        $(".login-page__error").css("display", "block");
-        $(".login-page__error").html(data.error);
+        $("#login-return").css("display", "block");
+        $("#login-return").html(data.error);
     } else {
         localStorage.setItem("token", data.token);
         localStorage.setItem("user", JSON.stringify(data.user));
-        window.location.href = "./register-car.html";
+        window.location.href = "./internal";
     }
 
 

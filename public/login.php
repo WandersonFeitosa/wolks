@@ -1,35 +1,45 @@
-<?php include "./components/header.php" ?> 
-<a class="wolks-logo-login" href="./index.html">
-        <img src="assets/img/logo-wolks.png" alt="">
-    </a>
-    <section class="login-page">
-        <div class="login-page__form">
-            <h1 class="title-section">Fazer Login</h1>
+<?php include "./components/header.php" ?>
+<a class="wolks-logo-login" href="./">
+    <img src="assets/img/logo-wolks.png" alt="">
+</a>
+<section class="login-page">
+    <div class="login-page__form-wrapper">
+        <div class="login-page__login-form">
+            <div class="login-page__form-description">
+                <h1>Faça seu login</h1>
+                <p>
+                    Relize seu login para poder inserir seus novos veículos
+                </p>
+            </div>
             <form id="login-form">
-                <input type="email" placeholder="Nome de usuário" name="username">
-                <input type="password" placeholder="Senha" name="password">
-                <div class="login-page__error"></div>
+                <input type="text" placeholder="Nome de usuário" name="username" required>
+                <input type="password" placeholder="Senha" name="password" required>                
                 <button type="submit">Logar</button>
+                <div id="login-return" class="login-page__return-msg"></div>
             </form>
-
-            <p>Não possui uma conta? <a href="./cadastro.html">Registre-se</a></p>
         </div>
-    </section>
-<!-- 
-    <section class="login-page">
-        <div class="login-page__form">
-            <h1 class="title-section">Criar Conta</h1>
+        <div class="login-page__signup-form">
+            <div class="login-page__form-description">
+                <h1>Não possui uma conta?</h1>
+                <p>
+                    Registre-se agora para poder
+                    inserir veículos
+                </p>
+            </div>
             <form id="signup-form">
                 <input type="text" placeholder="Nome de Usuário" name="username" required>
                 <input type="email" placeholder="Email" name="email" required>
                 <input type="password" placeholder="Senha" name="password" required>
                 <input type="password" placeholder="Confirme a sua senha" name="passwordConfirm" required>
-                <div class="login-page__error"></div>
                 <button type="submit">Registrar</button>
+                <div id="signup-return" class="login-page__return-msg"></div>
             </form>
-
-            <p>Já possui uma conta? <a href="./login.html">Login</a></p>
         </div>
-    </section> -->
+    </div>
+</section>
 
-<?php include "./components/footer.php" ?> 
+
+
+
+
+<?php include "./components/footer.php" ?>
