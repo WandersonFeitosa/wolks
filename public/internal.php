@@ -1,9 +1,12 @@
 <?php include "./components/header.php" ?>
 
-<a class="wolks-logo-login" href="./index.html">
+<a class="wolks-logo-login" href="./">
     <img src="assets/img/logo-wolks.png" alt="">
 </a>
-<section class="register-car-page">
+<section class="internal-page">
+    <button onclick="logout()">Deslogar</button>
+</section>
+<!-- <section class="register-car-page">
     <div class="register-car-page__form">
         <div class="register-car-page__desc">
             <h1>Preencha com as informações do veículo</h1>
@@ -28,5 +31,5 @@
         </div>
 
     </div>
-</section>
+</section> -->
 <?php include "./components/footer.php" ?>

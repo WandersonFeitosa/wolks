@@ -27,7 +27,7 @@ $("#login-form").submit(async (e) => {
         $("#login-return").html(data.error);
     } else {
         localStorage.setItem("token", data.token);
-        localStorage.setItem("user", JSON.stringify(data.user));
+        localStorage.setItem("user", JSON.stringify(data.userData));
         window.location.href = "./internal";
     }
 
@@ -73,4 +73,45 @@ $("#signup-form").submit(async (e) => {
         $("#signup-return").css("display", "block");
         $("#signup-return").css("color", "var(--green-300)");
     }
+})
+
+function logout() {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    window.location.href = "./";
+}
+
+if (window.location.pathname == "/") {
+    if (localStorage.getItem("user")) {    
+        appendUser(JSON.parse(localStorage.getItem("user")).name)
+    }
+}
+
+function appendUser(userName) {
+
+    userName = userName.split(" ")[0];
+
+    const mainMenu = document.querySelector(".main-menu__item-wrapper");
+    const sudoLi = document.createElement("li");
+    const sudoDiv = document.createElement("div");
+    const sudoUl = document.createElement("ul");
+
+
+    sudoLi.innerHTML = userName;
+    sudoLi.setAttribute("class", "main-menu__item");
+
+    sudoUl.innerHTML = `
+    <li>Trocar senha</li>
+    <li onclick="logout()">Logout</li> `
+    sudoUl.setAttribute("class", "main-menu__user-options");
+
+    sudoDiv.appendChild(sudoLi);
+    sudoDiv.append(sudoUl);
+    sudoDiv.setAttribute("class", "main-menu__user");
+
+    mainMenu.appendChild(sudoDiv);
+}
+
+$(".main-menu__user").click(() => {
+    $(".main-menu__user-options").toggleClass("open-user-menu");
 })
