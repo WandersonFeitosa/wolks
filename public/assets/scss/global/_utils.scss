@@ -8,7 +8,6 @@ html{
 html, body{
 	min-height: 100vh;
 	scrollbar-color: var( --clr-primary );
-	user-select: none;
 
 	&::-webkit-scrollbar {
 		width: 8px;
