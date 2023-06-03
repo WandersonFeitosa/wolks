@@ -21,8 +21,7 @@ html, body{
 	
 	&::-webkit-scrollbar-thumb {
 		background-color: var( --clr-primary ); 
-		transition: all .2s;
-		border-radius: 20px;
+		transition: all .2s;		
 	}
 
 	strong{
