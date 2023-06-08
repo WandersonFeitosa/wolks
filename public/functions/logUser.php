@@ -50,8 +50,8 @@ if ($response === false) {
         session_start();
 
         // Store data in the session
-        $_SESSION['username'] = $responseData['userData']['username'];
-        $_SESSION['user_id'] = $responseData['token'];
+        $_SESSION['userInfo'] = $responseData['userData'];
+        $_SESSION['token'] = $responseData['token'];
 
         http_response_code(200);
         echo json_encode($responseData);

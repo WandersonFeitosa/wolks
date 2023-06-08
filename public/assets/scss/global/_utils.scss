@@ -59,3 +59,31 @@ body {
 		display: none !important;
 	}
 }
+
+button:disabled {
+	opacity: 0.7;
+	cursor: not-allowed;
+}
+
+.loading-dots::after {
+	content: "";
+	animation: loading 3s infinite;
+}
+
+@keyframes loading {
+	0% {
+		content: ".";
+	}
+
+	33% {
+		content: "..";
+	}
+
+	66% {
+		content: "...";
+	}
+
+	100% {
+		content: ".";
+	}
+}

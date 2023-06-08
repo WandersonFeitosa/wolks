@@ -6,6 +6,10 @@ $(document).ready(function () {
     $("#login-form").submit(async (e) => {
         e.preventDefault();
 
+        let submitButton = $("#login-form button");
+
+        blockButton(submitButton, true, 'Logando');
+
         $("#login-return").css("display", "none");
 
         const username = e.target.username.value;
@@ -27,6 +31,7 @@ $(document).ready(function () {
         if (data.error) {
             $("#login-return").css("display", "block");
             $("#login-return").html(data.error);
+            blockButton(submitButton, false, "Logar");
         } else {
             localStorage.setItem("token", data.token);
             localStorage.setItem("user", JSON.stringify(data.userData));
@@ -140,9 +145,16 @@ $(document).ready(function () {
         $('.cars__manage-cars').show();
     });
 
-    //Registrar um novo carro
-
-    $("#register-car-form").submit(async (e) => {})
+    function blockButton(target, block, message) {
+        if (!message) {
+            message = "Aguarde";
+        }
+        if (block) {
+            $(target).text("").css("gap", "0").attr('disabled', 'disabled').append(`${message}<span class="loading-dots"></span>`);
+        } else {
+            $(target).text(message).removeAttr('disabled');
+        }
+    }
 
 });
 
