@@ -19,8 +19,12 @@
             if (localStorage.getItem("token")) {
                 window.location.href = "./internal";
             }
-        }        
+        }
     </script>
+    
+    <?php
+    session_start();
+    ?>
 </head>
 
 <body>

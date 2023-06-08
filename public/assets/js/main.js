@@ -11,7 +11,7 @@ $(document).ready(function () {
         const username = e.target.username.value;
         const password = e.target.password.value;
 
-        const response = await fetch(`${apiUrl}/logUser`, {
+        const response = await fetch(`/functions/logUser.php`, {
             method: "POST",
             body: JSON.stringify({
                 username,
@@ -25,12 +25,11 @@ $(document).ready(function () {
         const data = await response.json();
 
         if (data.error) {
-            console.log(data.error);
             $("#login-return").css("display", "block");
             $("#login-return").html(data.error);
         } else {
-            sessionStorage.setItem("token", data.token);
-            sessionStorage.setItem("user", JSON.stringify(data.userData));
+            localStorage.setItem("token", data.token);
+            localStorage.setItem("user", JSON.stringify(data.userData));
             window.location.href = "./internal";
         }
 
@@ -82,8 +81,8 @@ $(document).ready(function () {
 
     // Inclui o nome do usuário no menu caso esteja logado
     if (window.location.pathname == "/") {
-        if (sessionStorage.getItem("user")) {
-            appendUser(JSON.parse(sessionStorage.getItem("user")).name)
+        if (localStorage.getItem("user")) {
+            appendUser(JSON.parse(localStorage.getItem("user")).name)
         }
     }
 
@@ -101,7 +100,8 @@ $(document).ready(function () {
         sudoLi.setAttribute("class", "main-menu__item");
 
         sudoUl.innerHTML = `
-            <li>Trocar senha</li>
+            <li href="/internal" >Perfil</li>
+            <li href="/internal">Trocar senha</li>
             <li onclick="logout()">Logout</li>
             `
         sudoUl.setAttribute("class", "main-menu__user-options");
@@ -140,11 +140,22 @@ $(document).ready(function () {
         $('.cars__manage-cars').show();
     });
 
+    //Registrar um novo carro
+
+    $("#register-car-form").submit(async (e) => {})
+
 });
 
 // Logout
-function logout() {
-    sessionStorage.removeItem("token");
-    sessionStorage.removeItem("user");
+async function logout() {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    await fetch(`/functions/stopSession.php`);
     window.location.href = "./";
+}
+
+//clear local storage
+
+function clearLocalStorage() {
+    localStorage.clear();
 }

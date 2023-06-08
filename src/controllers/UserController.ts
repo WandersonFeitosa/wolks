@@ -49,14 +49,14 @@ export class UserController {
     //Busca o usuário no banco de dados
     const user = await UserWolks.findOne({ username: username });
     if (!user) {
-      return res.status(400).json({ error: "Usuário ou senha incorreto" });
+      return res.status(200).json({ error: "Usuário ou senha incorreto" });
     }
 
     //Verifica se a senha está correta
     if (user?.password) {
       const passwordMatch = await bcrypt.compare(password, user?.password);
       if (!passwordMatch) {
-        return res.status(400).json({ error: "Usuário ou senha incorreto" });
+        return res.status(200).json({ error: "Usuário ou senha incorreto" });
       }
     }
 
