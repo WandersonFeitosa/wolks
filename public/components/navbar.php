@@ -11,7 +11,22 @@
 
                 <a href="./login">
                     <li class="main-menu__item">Atualizar Veículos</li>
-                </a>               
+                </a>
+                <?php
+                if ($_SESSION) {
+                ?>
+                    <div class="main-menu__user">
+                        <li class="main-menu__item"><?php echo explode(" ", $_SESSION['userInfo']['name'])[0]; ?></li>
+                        <ul class="main-menu__user-options">
+                            <li href="/internal">Perfil</li>
+                            <li href="/internal">Trocar senha</li>
+                            <li onclick="logout()">Logout</li>
+                        </ul>
+                    </div>
+                <?php
+                }
+                ?>
+
             </ul>
         </div>
     </div>

@@ -33,12 +33,8 @@ $(document).ready(function () {
             $("#login-return").html(data.error);
             blockButton(submitButton, false, "Logar");
         } else {
-            localStorage.setItem("token", data.token);
-            localStorage.setItem("user", JSON.stringify(data.userData));
             window.location.href = "./internal";
         }
-
-
     });
 
     // Signup
@@ -84,40 +80,6 @@ $(document).ready(function () {
         }
     })
 
-    // Inclui o nome do usuário no menu caso esteja logado
-    if (window.location.pathname == "/") {
-        if (localStorage.getItem("user")) {
-            appendUser(JSON.parse(localStorage.getItem("user")).name)
-        }
-    }
-
-    function appendUser(userName) {
-
-        userName = userName.split(" ")[0];
-
-        const mainMenu = document.querySelector(".main-menu__item-wrapper");
-        const sudoLi = document.createElement("li");
-        const sudoDiv = document.createElement("div");
-        const sudoUl = document.createElement("ul");
-
-
-        sudoLi.innerHTML = userName;
-        sudoLi.setAttribute("class", "main-menu__item");
-
-        sudoUl.innerHTML = `
-            <li href="/internal" >Perfil</li>
-            <li href="/internal">Trocar senha</li>
-            <li onclick="logout()">Logout</li>
-            `
-        sudoUl.setAttribute("class", "main-menu__user-options");
-
-        sudoDiv.appendChild(sudoLi);
-        sudoDiv.append(sudoUl);
-        sudoDiv.setAttribute("class", "main-menu__user");
-
-        mainMenu.appendChild(sudoDiv);
-    }
-
     // Controla a navegação entre as páginas internas
 
     $(".main-menu__user").click(() => {
@@ -160,8 +122,6 @@ $(document).ready(function () {
 
 // Logout
 async function logout() {
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
     await fetch(`/functions/stopSession.php`);
     window.location.href = "./";
 }
