@@ -1,4 +1,8 @@
-<?php include "./components/header.php" ?>
+<?php include "./components/header.php";
+if ($_SESSION) {
+    header("Location: ./internal");
+}
+?>
 <a class="wolks-logo-login" href="./">
     <img src="assets/img/logo-wolks.png" alt="">
 </a>
