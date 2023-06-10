@@ -49,39 +49,6 @@
             color: var(--white);
         }
     }
-
-    &__user {
-        position: relative;
-        cursor: pointer;
-
-        .open-user-menu {
-            height: unset;
-            padding: rem(10);
-        }
-
-        ul {
-            position: absolute;
-            background: var(--white);
-            gap: rem(10);
-            flex-direction: column;
-            border-radius: 3px;
-            overflow: hidden;
-
-            height: 0;
-            padding: 0;
-
-            li {
-                width: max-content;
-                color: #000;
-                cursor: pointer;
-
-                &:hover {
-                    text-decoration: underline;
-                }
-            }
-        }
-    }
-
 }
 
 @media(max-width:768px) {
