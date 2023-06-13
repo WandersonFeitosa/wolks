@@ -13,32 +13,32 @@
         <div class="cars__return"><i class="fas fa-arrow-left"></i> Retornar</div>
         <h1>Cadastrar carro</h1>
         <p>Preencha os campos abaixo para cadastrar um novo carro</p>
-        <form action="">
+        <form id="register-car-form" action="">
             <div class="cars__register-car__form">
 
                 <div class="cars__register-car__form-item-double">
                     <div>
                         <h2>Modelo:</h2>
-                        <input type="text" name="brand" id="brand" placeholder="">
+                        <input type="text" name="model" placeholder="">
                     </div>
                     <div>
                         <h2>Ano:</h2>
-                        <input type="text" name="model" id="model" placeholder="">
+                        <input type="text" name="year" placeholder="">
                     </div>
                 </div>
                 <div class="cars__register-car__form-item-double">
                     <div>
                         <h2>Quantidade em estoque:</h2>
-                        <input type="text" name="brand" id="brand" placeholder="">
+                        <input type="text" name="stock" placeholder="">
                     </div>
                     <div>
                         <h2>Valor:</h2>
-                        <input type="text" name="model" id="model" placeholder="">
+                        <input type="text" name="price" placeholder="">
                     </div>
                 </div>
                 <div class="cars__register-car__form-item">
                     <h2>Informações adicionais:</h2>
-                    <textarea type="text" name="model" id="model" placeholder="Ex: 1.6 MSI 16V TOTAL FLEX 4P MANUAL"></textarea>
+                    <textarea type="text" name="info" placeholder="Ex: 1.6 MSI 16V TOTAL FLEX 4P MANUAL"></textarea>
                 </div>
                 <div class="cars__register-car__form-item">
                     <h2>Imagem:</h2>

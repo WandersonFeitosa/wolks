@@ -79,7 +79,38 @@ $(document).ready(function () {
             $("#signup-return").css("color", "var(--green-300)");
         }
     })
+    $("#register-car-form").submit(async (e) => {
+        e.preventDefault();
 
+        const model = e.target.model.value;
+        const year = e.target.year.value;
+        const stock = e.target.stock.value;
+        const price = e.target.price.value;
+        const info = e.target.info.value;
+        const image = e.target.image.files[0]; // Get the selected image file
+
+        const formData = new FormData();
+        formData.append("model", model);
+        formData.append("year", year);
+        formData.append("stock", stock);
+        formData.append("price", price);
+        formData.append("image", image);
+
+        try {
+            const response = await $.ajax({
+                url: `${apiUrl}/createCar`,
+                type: "POST",
+                data: formData,
+                contentType: false,
+                processData: false,
+            });
+
+            console.log(response);
+        } catch (error) {
+            console.log(error);
+        }
+
+    });
     // Controla a navegação entre as páginas internas
 
     $(".main-menu__user").click(() => {
@@ -122,12 +153,7 @@ $(document).ready(function () {
 
 // Logout
 async function logout() {
+    localStorage.clear();
     await fetch(`/functions/stopSession.php`);
     window.location.href = "./";
-}
-
-//clear local storage
-
-function clearLocalStorage() {
-    localStorage.clear();
 }

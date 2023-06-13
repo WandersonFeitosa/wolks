@@ -66,16 +66,17 @@ export class UserController {
       expiresIn: "1d",
     });
 
-    const userData = {
+    const userInfo = {
       name: user.name,
       username: user.username,
       email: user.email,
+      id: user._id,
     };
 
     return res.status(200).json({
       message: "Usuário logado",
       token,
-      userData,
+      userInfo,
     });
   }
 }
