@@ -1,5 +1,5 @@
-<section class="user-info">
- 
+<section class="user-info active_content">
+
     <div class="user-info__desc">
         <h1>Informações do usuário</h1>
     </div>

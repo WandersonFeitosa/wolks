@@ -1,4 +1,4 @@
-<section class="cars active_content">
+<section class="cars">
     <div class="cars__manage-cars car-section active-car-section">
         <h1>O que deseja fazer?</h1>
         <p>Selecione uma das opções abaixo para gerenciar os carros</p>
@@ -19,30 +19,30 @@
                 <div class="cars__register-car__form-item-double">
                     <div>
                         <h2>Modelo:</h2>
-                        <input type="text" name="model" placeholder="">
+                        <input type="text" name="model" placeholder="" required>
                     </div>
                     <div>
                         <h2>Ano:</h2>
-                        <input type="text" name="year" placeholder="">
+                        <input type="text" name="year" placeholder="" required>
                     </div>
                 </div>
                 <div class="cars__register-car__form-item-double">
                     <div>
                         <h2>Quantidade em estoque:</h2>
-                        <input type="text" name="stock" placeholder="">
+                        <input type="text" name="stock" placeholder="" required>
                     </div>
                     <div>
                         <h2>Valor:</h2>
-                        <input type="text" name="price" placeholder="">
+                        <input type="text" class="price" name="price" placeholder="" required>
                     </div>
                 </div>
                 <div class="cars__register-car__form-item">
                     <h2>Informações adicionais:</h2>
-                    <textarea type="text" name="info" placeholder="Ex: 1.6 MSI 16V TOTAL FLEX 4P MANUAL"></textarea>
+                    <textarea type="text" name="info" placeholder="Ex: 1.6 MSI 16V TOTAL FLEX 4P MANUAL" required></textarea>
                 </div>
                 <div class="cars__register-car__form-item">
                     <h2>Imagem:</h2>
-                    <input type="file" name="image">
+                    <input type="file" name="image" accept="image/*" required>
                 </div>
                 <button type="submit">Cadastrar veículo</button>
             </div>

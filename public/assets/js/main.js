@@ -1,5 +1,13 @@
 $(document).ready(function () {
 
+    $('.price').maskMoney({
+        prefix: 'R$ ',
+        allowNegative: true,
+        thousands: '.',
+        decimal: ',',
+        affixesStay: false
+    });
+
     var apiUrl = "http://localhost:3000";
 
     // Login
@@ -79,6 +87,7 @@ $(document).ready(function () {
             $("#signup-return").css("color", "var(--green-300)");
         }
     })
+
     $("#register-car-form").submit(async (e) => {
         e.preventDefault();
 
@@ -95,6 +104,7 @@ $(document).ready(function () {
         formData.append("stock", stock);
         formData.append("price", price);
         formData.append("image", image);
+        formData.append("info", info);
 
         try {
             const response = await $.ajax({
