@@ -8,8 +8,8 @@ const storage = multer.diskStorage({
   filename(req, file, cb) {
     function generateFileName(file: any) {
       const fileType = file.mimetype.split("/");
-      const fileName = file.originalname.split(".");
-      return `${fileName[0]}.${fileType[1]}`;
+      const fileName = Date.now() + "" + Math.round(Math.random() * 1e9);
+      return `${fileName}.${fileType[1]}`;
     }
     const fileName = generateFileName(file);
     cb(null, fileName);
