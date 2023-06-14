@@ -44,6 +44,7 @@
                     <h2>Imagem:</h2>
                     <input type="file" name="image" accept="image/*" required>
                 </div>
+                <div id="register-car-return"></div>
                 <button type="submit">Cadastrar veículo</button>
             </div>
         </form>
@@ -65,5 +66,17 @@
             </select>
             <button type="submit">Excluir carro</button>
         </form>
+    </div>
+    <div class="success-section">
+        <h1 class="sucess-section__title">
+            <i class="fas fa-check-circle"></i>
+            Carro cadastrado com sucesso!
+        </h1>
+        <p class="success-section__desc"></p>
+        <a class="success-section__redirect">
+            <button>Visualizar Anúncio</button>
+        </a>
+
+        <button class="cars__return">Gerenciar Carros</button>
     </div>
 </section>

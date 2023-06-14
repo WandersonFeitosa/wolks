@@ -88,9 +88,11 @@ $(document).ready(function () {
         }
     })
 
+
     $("#register-car-form").submit(async (e) => {
         e.preventDefault();
 
+        const user_id = JSON.parse(localStorage.getItem("user")).id;
         const model = e.target.model.value;
         const year = e.target.year.value;
         const stock = e.target.stock.value;
@@ -105,21 +107,27 @@ $(document).ready(function () {
         formData.append("price", price);
         formData.append("image", image);
         formData.append("info", info);
+        formData.append("user_id", user_id);
 
-        try {
-            const response = await $.ajax({
-                url: `${apiUrl}/createCar`,
-                type: "POST",
-                data: formData,
-                contentType: false,
-                processData: false,
-            });
 
-            console.log(response);
-        } catch (error) {
-            console.log(error);
+        const response = await $.ajax({
+            url: `${apiUrl}/createCar`,
+            type: "POST",
+            data: formData,
+            contentType: false,
+            processData: false,
+        });
+
+        if (response.error) {
+            $("#register-car-return").css("display", "block").css("color", "var(--red-300)").css("margin-bottom", "20px");
+            $("#register-car-return").html(response.error);
+        } else {
+            $(".car-section").css("display", "none");
+            $(".success-section").css("display", "block");
+            $(".suceess-section__title").html('<i class="fas fa-check-circle"></i> Carro cadastrado com sucesso');
+            $(".success-section__desc").html('O carro foi cadastrado com sucesso, você pode visualizar ele na página de carros cadastrados');
+            $(".success-section__redirect").attr("href", `/cars/${response.newCarId}`);
         }
-
     });
     // Controla a navegação entre as páginas internas
 
@@ -145,6 +153,7 @@ $(document).ready(function () {
 
     $('.cars__return').click(function () {
         $('.car-section').hide();
+        $('.success-section').hide();
         $('.cars__manage-cars').show();
     });
 

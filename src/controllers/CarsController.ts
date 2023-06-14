@@ -33,7 +33,13 @@ export class CarsController {
     } catch (err) {
       return res.status(400).json({ message: "Erro ao criar carro" });
     }
+    //get the ID of the new car
+    const newCar = await CarWolks.findOne({
+      user_id,
+      image_url,
+    });
+    const newCarId = newCar?._id;
 
-    return res.status(201).json({ message: "Carro criado com sucesso" });
+    return res.status(201).json({ newCarId });
   }
 }
