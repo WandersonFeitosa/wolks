@@ -1,5 +1,14 @@
-<?php include "./components/header.php" ?> 
-<?php include "./components/navbar.php" ?> 
+<?php
+
+include "./components/header.php";
+include "./components/navbar.php";
+
+$url = 'http://localhost:3000/getAllCars'; 
+$response = file_get_contents($url, false);
+
+$cars = json_decode($response, true);
+?>
+
 
 <section id="main-banner">
     <div class="main-banner__image"></div>
@@ -67,4 +76,4 @@
         </div>
     </div>
 </section>
-<?php include "./components/footer.php" ?> 
+<?php include "./components/footer.php" ?>

@@ -1,4 +1,4 @@
 .env
 node_modules
 wolks.code-workspace
-/public/uploads
+/public/uploads/*

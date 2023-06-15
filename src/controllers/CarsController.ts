@@ -42,4 +42,8 @@ export class CarsController {
 
     return res.status(201).json({ newCarId });
   }
+  async getAllCars(req: Request, res: Response) {
+    const cars = await CarWolks.find();
+    return res.status(200).json(cars);
+  }
 }

@@ -15,5 +15,6 @@ routes.post(
   upload.single("image"),
   new CarsController().createCar
 );
+routes.get("/getAllCars", new CarsController().getAllCars);
 
 export default routes;
