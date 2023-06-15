@@ -17,9 +17,17 @@
         border-radius: 2px;
 
         &__image {
-            max-width: 100%;
-            object-fit: cover;
+
             margin-bottom: rem(25);
+            min-height: rem(115);
+
+            img {
+                max-width: 100%;
+                height: rem(115);
+                object-fit: cover;
+                display: block;
+                margin: 0 auto;
+            }
         }
 
         &__info {
@@ -51,6 +59,7 @@
     }
 
 }
+
 @media(max-width:768px) {
     .stock {
         &__list {

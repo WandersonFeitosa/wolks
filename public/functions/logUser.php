@@ -1,4 +1,7 @@
 <?php
+
+include "./globalVars.php";
+
 //Atribui o body da requisição que é um JSON para a variável $data
 $data = json_decode(file_get_contents('php://input'), true);
 
@@ -30,7 +33,7 @@ $options = array(
 $context = stream_context_create($options);
 
 // Make the request to the "/logUser" route
-$url = 'http://localhost:3000/logUser';  // Replace with your actual URL
+$url = $api_url . '/logUser';  // Replace with your actual URL
 $response = file_get_contents($url, false, $context);
 
 // Process the response

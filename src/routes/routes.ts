@@ -16,5 +16,6 @@ routes.post(
   new CarsController().createCar
 );
 routes.get("/getAllCars", new CarsController().getAllCars);
+routes.get("/getCarById/:id", new CarsController().getCarById);
 
 export default routes;

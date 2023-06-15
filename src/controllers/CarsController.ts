@@ -46,4 +46,10 @@ export class CarsController {
     const cars = await CarWolks.find();
     return res.status(200).json(cars);
   }
+
+  async getCarById(req: Request, res: Response) {
+    const { id } = req.params;
+    const car = await CarWolks.findById(id);
+    return res.status(200).json(car);
+  }
 }
