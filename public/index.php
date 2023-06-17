@@ -4,10 +4,6 @@ include "./components/header.php";
 include "./components/navbar.php";
 include "./functions/globalVars.php";
 
-$url = $api_url . '/getAllCars';
-$response = file_get_contents($url, false);
-
-$cars = json_decode($response, true);
 ?>
 
 
@@ -46,65 +42,6 @@ $cars = json_decode($response, true);
             Confira abaixo os veículos que temos disponíveis para você no nosso diverso estoque.
         </p>
     </div>
-    <div class="container">
-        <div class="stock__list">
-            <?php
-            foreach ($cars as $car) {
-            ?>
-                <div class="stock__item">
-                    <div class="stock__item__image">
-                        <img src=".<?php echo $car['image_url'] ?>" alt="">
-                    </div>
-                    <div class="stock__item__info">
-                        <h3>
-                            <?php echo $car['model'] ?>
-                        </h3>
-                        <p style="font-weight: 700;">
-                            Estoque: <?php echo $car['stock'] ?>
-                        </p>
-                        <p>
-                            <?php echo $car['year'] ?>
-                        </p>
-                        <p>
-                            <?php echo $car['info'] ?>
-                        </p>
-
-                        <p>
-                            R$ <?php echo $car['price'] ?>
-                        </p>
-                        <a href="./cars/?id=<?php echo $car['_id'] ?>">
-                            Ver mais
-                        </a>
-                    </div>
-                </div>
-            <?php } ?>
-            <div class="stock__item">
-                <div class="stock__item__image">
-                    <img src="./assets/img/virtus.jpg" alt="">
-                </div>
-                <div class="stock__item__info">
-                    <h3>
-                        Virtus
-                    </h3>
-                    <p style="font-weight: 700;">
-                        Estoque: 9
-                    </p>
-                    <p>
-                        2019/2020
-                    </p>
-                    <p>
-                        1.6 MSI 16V TOTAL FLEX 4P MANUAL
-                    </p>
-
-                    <p>
-                        R$ 65.000,00
-                    </p>
-                    <a href="./product">
-                        Ver mais
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
+    <?php include "./components/cars-list.php" ?>
 </section>
 <?php include "./components/footer.php" ?>

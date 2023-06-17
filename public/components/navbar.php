@@ -11,13 +11,13 @@
                 <?php
                 if ($_SESSION) {
                 ?>
-                    <a href="internal">
+                    <a href="/internal">
                         <li class="main-menu__item"><?php echo explode(" ", $_SESSION['userInfo']['name'])[0]; ?></li>
                     </a>
                 <?php
                 } else {
                 ?>
-                    <a href="./login">
+                    <a href="/login">
                         <li class="main-menu__item">Login</li>
                     </a>
                 <?php
