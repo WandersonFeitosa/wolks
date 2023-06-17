@@ -79,4 +79,31 @@ export class UserController {
       userInfo,
     });
   }
+
+  async changePassword(req: Request, res: Response) {
+    const { id, password, newPassword } = req.body;
+    try {
+      //Busca o usuário no banco de dados
+      const user = await UserWolks.findOne({ _id: id });
+      if (!user) {
+        return res.status(200).json({ error: "Usuário ou senha incorreto" });
+      }
+
+      //Verifica se a senha está correta
+      if (user?.password) {
+        const passwordMatch = await bcrypt.compare(password, user?.password);
+        if (!passwordMatch) {
+          return res.status(200).json({ error: "Senha incorreta" });
+        }
+      }
+
+      const hashedPassword = await bcrypt.hash(newPassword, 10);
+
+      await UserWolks.updateOne({ _id: id }, { password: hashedPassword });
+    } catch (err) {
+      console.log(err);
+      return res.status(400).json({ error: "Erro ao alterar senha", err });
+    }
+    return res.status(200).json({ message: "Senha alterada com sucesso" });
+  }
 }

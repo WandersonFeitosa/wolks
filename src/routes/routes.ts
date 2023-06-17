@@ -10,6 +10,8 @@ routes.use(cors());
 
 routes.post("/logUser", new UserController().logUser);
 routes.post("/createUser", new UserController().createUser);
+routes.patch("/changePassword", new UserController().changePassword);
+
 routes.post(
   "/createCar",
   upload.single("image"),
