@@ -1,15 +1,21 @@
 .buy {
-    padding-top: rem(155);
+    height: 100vh;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
 
     &__image {
         width: 60%;
-        margin-top: rem(100);
 
         img {
-            width: 100%;
+            width: auto;
+            max-height: 80vh;
         }
+    }
+
+    &__wrapper {
+        display: flex;
+        justify-content: space-between;
     }
 
     &__info {
