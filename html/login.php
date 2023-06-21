@@ -1,6 +1,6 @@
 <?php include "./components/header.php";
 if ($_SESSION) {
-    header("Location: ./internal");
+    header("Location: ./internal.php");
 }
 ?>
 <a class="wolks-logo-login" href="./">

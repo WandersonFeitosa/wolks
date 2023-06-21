@@ -41,7 +41,7 @@ $(document).ready(function () {
             $("#login-return").html(data.error);
             blockButton(submitButton, false, "Logar");
         } else {
-            window.location.href = "./internal";
+            window.location.href = "./internal.php";
         }
     });
 
@@ -126,7 +126,7 @@ $(document).ready(function () {
             $(".success-section").css("display", "block");
             $(".suceess-section__title").html('<i class="fas fa-check-circle"></i> Carro cadastrado com sucesso');
             $(".success-section__desc").html('O carro foi cadastrado com sucesso, você pode visualizar ele na página de carros cadastrados');
-            $(".success-section__redirect").attr("href", `/cars/${response.newCarId}`);
+            $(".success-section__redirect").attr("href", `/cars.php/${response.newCarId}`);
         }
     });
     // Controla a navegação entre as páginas internas

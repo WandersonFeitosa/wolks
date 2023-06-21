@@ -30,7 +30,7 @@ $cars = json_decode($response, true);
                     <p>
                         R$ <?php echo $car['price'] ?>
                     </p>
-                    <a href="./cars/?id=<?php echo $car['_id'] ?>">
+                    <a href="./cars.php/?id=<?php echo $car['_id'] ?>">
                         Ver mais
                     </a>
                 </div>
